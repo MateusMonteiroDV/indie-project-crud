@@ -1,6 +1,8 @@
 # Teste Técnico - Projeto
 
-Projeto em Python com Streamlit e SQLite, com opção de rodar via Docker.
+Projeto em Python usando **Streamlit** e **SQLite**, com opção de rodar via Docker.
+
+---
 
 ## Pré-requisitos
 
@@ -8,55 +10,88 @@ Projeto em Python com Streamlit e SQLite, com opção de rodar via Docker.
 - pip
 - Docker (opcional)
 
+---
+
 ## Setup Local
 
-1. Criar e ativar ambiente virtual:
+1. **Entre na pasta `src/`**:
+
+```bash
+cd src
+```
+
+2. **Crie e ative o ambiente virtual dentro de `src/`**:
+
 ```bash
 python3 -m venv venv
 source venv/bin/activate
 ```
 
-2. Instalar dependências:
+3. **Instale as dependências:**
+
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Criar banco de dados:
+4. **Crie o banco de dados:**
+
 ```bash
 python model/db.py
 ```
 
-4. (Opcional) Inserir dados fictícios:
+5. **(Opcional) Popule com dados fictícios:**
+
 ```bash
 python model/seed.py
 ```
 
-5. Rodar aplicação:
+6. **Execute a aplicação:**
+
 ```bash
 streamlit run main.py
 ```
 
-> Todos os comandos devem ser executados dentro da pasta `src`.
+> A aplicação estará disponível em `http://localhost:8501`.
+
+---
 
 ## Setup via Docker (Opcional)
 
-Subir container com dados fictícios:
+1. **Suba o container (com dados fictícios):**
+
 ```bash
-docker compose up
+docker compose up --build
 ```
+
+2. **Acesse a aplicação em:**
+
+```
+http://localhost:8501
+```
+
+> O container usa `src/` como diretório de trabalho, então qualquer alteração no código é refletida automaticamente.
+
+---
 
 ## Estrutura do Projeto
 
 ```
-.
 .
 ├── docker-compose.yml
 ├── src/
 │   ├── main.py
 │   ├── model/
 │   │   ├── db.py
-|   |   ├── db_functions.py
+│   │   ├── db_functions.py
 │   │   └── seed.py
 │   ├── Dockerfile
 │   └── requirements.txt
+```
+
+---
+
+## Observações
+
+- **Banco SQLite:** Arquivo `db.sqlite` será criado automaticamente em `src/` ao rodar `db.py`.
+- **Streamlit:** A porta padrão é `8501`, mas pode ser alterada no Docker ou diretamente no comando `streamlit run`.
 
