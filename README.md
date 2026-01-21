@@ -60,7 +60,7 @@ streamlit run main.py
 1. **Suba o container (com dados fictícios):**
 
 ```bash
-docker compose up --build
+docker compose up 
 ```
 
 2. **Acesse a aplicação em:**
