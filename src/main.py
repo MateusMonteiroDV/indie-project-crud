@@ -18,12 +18,12 @@ with tab1:
         if submit:
             add_product(nome, quantidade, preco)
             st.success(f"Produto '{nome}' adicionado!")
-    st.subheader("Adicionar Estoque")
+    st.subheader("Atualizar Estoque")
     products = get_products()
     if not products.empty:
         prod_dict = dict(zip(products["id"], products["nome"]))
         prod_id = st.selectbox("Produto", list(prod_dict.keys()), format_func=lambda x: prod_dict[x])
-        qtd = st.number_input("Quantidade a adicionar", min_value=0, step=1)
+        qtd = st.number_input("Quantidade a adicionar ou retirar", step=1)
         if st.button("Atualizar Estoque"):
             add_stock(prod_id, qtd)
             st.success(f"Estoque atualizado para {prod_dict[prod_id]}")
